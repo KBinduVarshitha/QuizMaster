@@ -173,6 +173,27 @@ INSERT INTO questions (quiz_id, question_text, option_a, option_b, option_c, opt
   ((SELECT id FROM quizzes WHERE title = 'Web Development' LIMIT 1), 'Which HTML tag is used to create a hyperlink?', '<link>', '<a>', '<href>', '<url>', 'B', 4),
   ((SELECT id FROM quizzes WHERE title = 'Web Development' LIMIT 1), 'What does CSS stand for?', 'Creative Style Sheets', 'Cascading Style Sheets', 'Computer Style Sheets', 'Colorful Style Sheets', 'B', 5);
 
+INSERT INTO questions (quiz_id, question_text, option_a, option_b, option_c, option_d, correct_answer, question_order) VALUES
+  ((SELECT id FROM quizzes WHERE title = 'JavaScript Fundamentals' LIMIT 1), 'What is the correct way to declare a variable in JavaScript?', 'var myVar;', 'variable myVar;', 'v myVar;', 'declare myVar;', 'A', 1),
+  ((SELECT id FROM quizzes WHERE title = 'JavaScript Fundamentals' LIMIT 1), 'Which of the following is NOT a JavaScript data type?', 'string', 'boolean', 'float', 'undefined', 'C', 2),
+  ((SELECT id FROM quizzes WHERE title = 'JavaScript Fundamentals' LIMIT 1), 'What does "=== " operator do in JavaScript?', 'Assignment', 'Comparison with type coercion', 'Strict equality comparison', 'Not equal', 'C', 3),
+  ((SELECT id FROM quizzes WHERE title = 'JavaScript Fundamentals' LIMIT 1), 'Which method is used to add an element to the end of an array?', 'push()', 'pop()', 'shift()', 'unshift()', 'A', 4),
+  ((SELECT id FROM quizzes WHERE title = 'JavaScript Fundamentals' LIMIT 1), 'What is the correct way to create a function in JavaScript?', 'function = myFunction() {}', 'function myFunction() {}', 'create myFunction() {}', 'def myFunction() {}', 'B', 5);
+
+INSERT INTO questions (quiz_id, question_text, option_a, option_b, option_c, option_d, correct_answer, question_order) VALUES
+  ((SELECT id FROM quizzes WHERE title = 'JavaScript Fundamentals' LIMIT 1), 'What is the correct way to declare a variable in JavaScript?', 'var myVar;', 'variable myVar;', 'v myVar;', 'declare myVar;', 'A', 1),
+  ((SELECT id FROM quizzes WHERE title = 'JavaScript Fundamentals' LIMIT 1), 'Which of the following is NOT a JavaScript data type?', 'string', 'boolean', 'float', 'undefined', 'C', 2),
+  ((SELECT id FROM quizzes WHERE title = 'JavaScript Fundamentals' LIMIT 1), 'What does "=== " operator do in JavaScript?', 'Assignment', 'Comparison with type coercion', 'Strict equality comparison', 'Not equal', 'C', 3),
+  ((SELECT id FROM quizzes WHERE title = 'JavaScript Fundamentals' LIMIT 1), 'Which method is used to add an element to the end of an array?', 'push()', 'pop()', 'shift()', 'unshift()', 'A', 4),
+  ((SELECT id FROM quizzes WHERE title = 'JavaScript Fundamentals' LIMIT 1), 'What is the correct way to create a function in JavaScript?', 'function = myFunction() {}', 'function myFunction() {}', 'create myFunction() {}', 'def myFunction() {}', 'B', 5);
+
+INSERT INTO questions (quiz_id, question_text, option_a, option_b, option_c, option_d, correct_answer, question_order) VALUES
+  ((SELECT id FROM quizzes WHERE title = 'JavaScript Fundamentals' LIMIT 1), 'What is the correct way to declare a variable in JavaScript?', 'var myVar;', 'variable myVar;', 'v myVar;', 'declare myVar;', 'A', 1),
+  ((SELECT id FROM quizzes WHERE title = 'JavaScript Fundamentals' LIMIT 1), 'Which of the following is NOT a JavaScript data type?', 'string', 'boolean', 'float', 'undefined', 'C', 2),
+  ((SELECT id FROM quizzes WHERE title = 'JavaScript Fundamentals' LIMIT 1), 'What does "=== " operator do in JavaScript?', 'Assignment', 'Comparison with type coercion', 'Strict equality comparison', 'Not equal', 'C', 3),
+  ((SELECT id FROM quizzes WHERE title = 'JavaScript Fundamentals' LIMIT 1), 'Which method is used to add an element to the end of an array?', 'push()', 'pop()', 'shift()', 'unshift()', 'A', 4),
+  ((SELECT id FROM quizzes WHERE title = 'JavaScript Fundamentals' LIMIT 1), 'What is the correct way to create a function in JavaScript?', 'function = myFunction() {}', 'function myFunction() {}', 'create myFunction() {}', 'def myFunction() {}', 'B', 5);
+
 -- Update total_questions count for each quiz
 UPDATE quizzes SET total_questions = (
   SELECT COUNT(*) FROM questions WHERE questions.quiz_id = quizzes.id

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useAuth } from '../../contexts/AuthContext'
-import { supabase } from '../../lib/supabase'
+import { supabase } from '../../lib/database'
 import { Clock, ChevronLeft, ChevronRight, CheckCircle } from 'lucide-react'
 
 interface Question {

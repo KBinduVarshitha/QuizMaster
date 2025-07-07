@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useAuth } from '../../contexts/AuthContext'
-import { supabase, testConnection } from '../../lib/supabase'
+import { supabase, testConnection } from '../../lib/database'
 import QuizCard from './QuizCard'
 import { Trophy, Target, Clock, Award, AlertCircle } from 'lucide-react'
 
