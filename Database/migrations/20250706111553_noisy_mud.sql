@@ -1,48 +1,3 @@
-/*
-  # Online Quiz Application Database Schema
-
-  1. New Tables
-    - `quizzes`
-      - `id` (uuid, primary key)
-      - `title` (text)
-      - `description` (text)
-      - `duration_minutes` (integer)
-      - `total_questions` (integer)
-      - `created_by` (uuid, references auth.users)
-      - `created_at` (timestamp)
-      - `is_active` (boolean)
-    
-    - `questions`
-      - `id` (uuid, primary key)
-      - `quiz_id` (uuid, references quizzes)
-      - `question_text` (text)
-      - `option_a` (text)
-      - `option_b` (text)
-      - `option_c` (text)
-      - `option_d` (text)
-      - `correct_answer` (text)
-      - `question_order` (integer)
-      - `created_at` (timestamp)
-    
-    - `user_quiz_attempts`
-      - `id` (uuid, primary key)
-      - `user_id` (uuid, references auth.users)
-      - `quiz_id` (uuid, references quizzes)
-      - `score` (integer)
-      - `total_questions` (integer)
-      - `time_taken_seconds` (integer)
-      - `answers` (jsonb)
-      - `completed_at` (timestamp)
-      - `created_at` (timestamp)
-
-  2. Security
-    - Enable RLS on all tables
-    - Add policies for authenticated users
-    - Restrict quiz creation to authenticated users
-    - Users can only view their own attempts
-*/
-
--- Create quizzes table
 CREATE TABLE IF NOT EXISTS quizzes (
   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   title text NOT NULL,
@@ -172,27 +127,6 @@ INSERT INTO questions (quiz_id, question_text, option_a, option_b, option_c, opt
   ((SELECT id FROM quizzes WHERE title = 'Web Development' LIMIT 1), 'What is the purpose of the DOCTYPE declaration?', 'To define the document type', 'To include external files', 'To create comments', 'To set the page title', 'A', 3),
   ((SELECT id FROM quizzes WHERE title = 'Web Development' LIMIT 1), 'Which HTML tag is used to create a hyperlink?', '<link>', '<a>', '<href>', '<url>', 'B', 4),
   ((SELECT id FROM quizzes WHERE title = 'Web Development' LIMIT 1), 'What does CSS stand for?', 'Creative Style Sheets', 'Cascading Style Sheets', 'Computer Style Sheets', 'Colorful Style Sheets', 'B', 5);
-
-INSERT INTO questions (quiz_id, question_text, option_a, option_b, option_c, option_d, correct_answer, question_order) VALUES
-  ((SELECT id FROM quizzes WHERE title = 'JavaScript Fundamentals' LIMIT 1), 'What is the correct way to declare a variable in JavaScript?', 'var myVar;', 'variable myVar;', 'v myVar;', 'declare myVar;', 'A', 1),
-  ((SELECT id FROM quizzes WHERE title = 'JavaScript Fundamentals' LIMIT 1), 'Which of the following is NOT a JavaScript data type?', 'string', 'boolean', 'float', 'undefined', 'C', 2),
-  ((SELECT id FROM quizzes WHERE title = 'JavaScript Fundamentals' LIMIT 1), 'What does "=== " operator do in JavaScript?', 'Assignment', 'Comparison with type coercion', 'Strict equality comparison', 'Not equal', 'C', 3),
-  ((SELECT id FROM quizzes WHERE title = 'JavaScript Fundamentals' LIMIT 1), 'Which method is used to add an element to the end of an array?', 'push()', 'pop()', 'shift()', 'unshift()', 'A', 4),
-  ((SELECT id FROM quizzes WHERE title = 'JavaScript Fundamentals' LIMIT 1), 'What is the correct way to create a function in JavaScript?', 'function = myFunction() {}', 'function myFunction() {}', 'create myFunction() {}', 'def myFunction() {}', 'B', 5);
-
-INSERT INTO questions (quiz_id, question_text, option_a, option_b, option_c, option_d, correct_answer, question_order) VALUES
-  ((SELECT id FROM quizzes WHERE title = 'JavaScript Fundamentals' LIMIT 1), 'What is the correct way to declare a variable in JavaScript?', 'var myVar;', 'variable myVar;', 'v myVar;', 'declare myVar;', 'A', 1),
-  ((SELECT id FROM quizzes WHERE title = 'JavaScript Fundamentals' LIMIT 1), 'Which of the following is NOT a JavaScript data type?', 'string', 'boolean', 'float', 'undefined', 'C', 2),
-  ((SELECT id FROM quizzes WHERE title = 'JavaScript Fundamentals' LIMIT 1), 'What does "=== " operator do in JavaScript?', 'Assignment', 'Comparison with type coercion', 'Strict equality comparison', 'Not equal', 'C', 3),
-  ((SELECT id FROM quizzes WHERE title = 'JavaScript Fundamentals' LIMIT 1), 'Which method is used to add an element to the end of an array?', 'push()', 'pop()', 'shift()', 'unshift()', 'A', 4),
-  ((SELECT id FROM quizzes WHERE title = 'JavaScript Fundamentals' LIMIT 1), 'What is the correct way to create a function in JavaScript?', 'function = myFunction() {}', 'function myFunction() {}', 'create myFunction() {}', 'def myFunction() {}', 'B', 5);
-
-INSERT INTO questions (quiz_id, question_text, option_a, option_b, option_c, option_d, correct_answer, question_order) VALUES
-  ((SELECT id FROM quizzes WHERE title = 'JavaScript Fundamentals' LIMIT 1), 'What is the correct way to declare a variable in JavaScript?', 'var myVar;', 'variable myVar;', 'v myVar;', 'declare myVar;', 'A', 1),
-  ((SELECT id FROM quizzes WHERE title = 'JavaScript Fundamentals' LIMIT 1), 'Which of the following is NOT a JavaScript data type?', 'string', 'boolean', 'float', 'undefined', 'C', 2),
-  ((SELECT id FROM quizzes WHERE title = 'JavaScript Fundamentals' LIMIT 1), 'What does "=== " operator do in JavaScript?', 'Assignment', 'Comparison with type coercion', 'Strict equality comparison', 'Not equal', 'C', 3),
-  ((SELECT id FROM quizzes WHERE title = 'JavaScript Fundamentals' LIMIT 1), 'Which method is used to add an element to the end of an array?', 'push()', 'pop()', 'shift()', 'unshift()', 'A', 4),
-  ((SELECT id FROM quizzes WHERE title = 'JavaScript Fundamentals' LIMIT 1), 'What is the correct way to create a function in JavaScript?', 'function = myFunction() {}', 'function myFunction() {}', 'create myFunction() {}', 'def myFunction() {}', 'B', 5);
 
 -- Update total_questions count for each quiz
 UPDATE quizzes SET total_questions = (
